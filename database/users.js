@@ -1,22 +1,25 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require(".");
-const User = sequelize.define(
-  "users",
-  {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    emailAddress: {
-      type: DataTypes.STRING,
-      unique: true,
-    },
-    phone: DataTypes.STRING,
-    apiKey: DataTypes.STRING,
-    password: DataTypes.STRING,
+const { DataTypes } = require('sequelize');
+const sequelize = require('.');
+const User = sequelize.define('user', {
+  firstName: DataTypes.STRING,
+  lastName: DataTypes.STRING,
+  emailAddress: {
+    type:DataTypes.STRING,
+    unique: true
   },
-  {
-    timestamps: true,
-    paraniod: true,
-  }
-);
-
+  phone:DataTypes.STRING,
+  apikey:DataTypes.STRING,
+  password:DataTypes.STRING,
+  is_admin:DataTypes.BOOLEAN
+},{
+  timestamps: true,
+  paranoid: true
+});
 module.exports = User;
+
+
+
+
+
+
+
