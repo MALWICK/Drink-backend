@@ -9,8 +9,8 @@ const Drinks_ingredients = sequelize.define("Drinks_ingredients", {
     primaryKey: true,
   },
   description : DataTypes.TEXT,
-  drink_name: DataTypes.TEXT,
-  drink_id: DataTypes.INTEGER,
+  drinks_name: DataTypes.TEXT,
+  drinks_id: DataTypes.INTEGER,
   ingredients_id: DataTypes.INTEGER,
 },{
     timestamps: true,
