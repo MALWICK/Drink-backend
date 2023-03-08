@@ -7,14 +7,13 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const drinksRouter = require("./routes/drinks");
-/* const drinksIngredientRouter = require("./routes/drink_ingredients"); */
 const ingredientsRouter = require("./routes/ingredients");
 const glassesRouter = require("./routes/glasses");
-const categoriesRouter =  require("./routes/categories");
-/* const drinksGlassesRouter = require("./routes/drinks_glasses");
- *//* const drinksCategory = require("./routes/drinks_categories"); */
+const categoriesRouter = require("./routes/categories");
+const relate = require("./database/relationships");
 
 const app = express();
+relate();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
