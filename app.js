@@ -11,6 +11,7 @@ const drinksIngredientRouter = require("./routes/drink_ingredients");
 const ingredientsRouter = require("./routes/ingredients");
 const glassesRouter = require("./routes/glasses");
 const drinksGlassesRouter = require("./routes/drinks_glasses");
+const drinksCategory = require("./routes/drinks_categories");
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/drinks_ingredients", drinksIngredientRouter);
 app.use("/ingredients", ingredientsRouter);
 app.use("/glasses", glassesRouter);
 app.use("/drinks_glasses", drinksGlassesRouter);
+app.use("/drinks_categories", drinksCategoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
