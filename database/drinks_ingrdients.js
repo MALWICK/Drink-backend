@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+/* const { DataTypes } = require("sequelize");
 const sequelize = require(".");
 
 const Drinks_ingredients = sequelize.define("Drinks_ingredients", {
@@ -18,4 +18,4 @@ const Drinks_ingredients = sequelize.define("Drinks_ingredients", {
 }
 );
  
-module.exports = Drinks_ingredients
+module.exports = Drinks_ingredients */

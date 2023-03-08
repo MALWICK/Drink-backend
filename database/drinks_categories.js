@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+/* const { DataTypes } = require("sequelize");
 const sequelize = require(".");
 
 const Drinks_categories = sequelize.define("Drinks_categories", {
@@ -8,5 +8,11 @@ const Drinks_categories = sequelize.define("Drinks_categories", {
         autoIncrement: true,
         primaryKey: true,
       },
+      drinks_id: DataTypes.INTEGER,
+      category_id: DataTypes.INTEGER,
+
+},{
+    timestamps: true,
+    paranoid: true,
 })
-module.exports = Drinks_categories;
+module.exports = Drinks_categories; */

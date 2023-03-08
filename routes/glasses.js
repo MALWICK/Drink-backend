@@ -11,17 +11,17 @@ router.post("/", async (req, res) => {
   res.join(glass);
 });
 router.post("/", async (req, res) => {
-  const { description } = req.body;
+  const { name} = req.body;
   const glass = await Glasses.create({
-    description,
+   name,
   });
   res.send(glass);
 });
 router.put("/:id", async (req, res) => {
-  const { description } = req.body;
+  const { name } = req.body;
   const glass = await Glasses.update(
     {
-      description,
+      name,
     },
     {
       where: {
@@ -33,10 +33,10 @@ router.put("/:id", async (req, res) => {
 });
 
 router.patch("/:id", async (req, res) => {
-  const { description } = req.body;
+  const { name} = req.body;
   const glass = await Glasses.update(
     {
-      description,
+      name,
     },
     {
       where: { id: req.params.id },

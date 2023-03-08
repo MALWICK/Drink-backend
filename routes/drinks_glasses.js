@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const Drinks_glasses = require("../database/drinks_glasses");
 const router = express.Router();
 router.get("/", async (req, res) => {
@@ -42,3 +42,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+ */

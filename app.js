@@ -7,11 +7,12 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const drinksRouter = require("./routes/drinks");
-const drinksIngredientRouter = require("./routes/drink_ingredients");
+/* const drinksIngredientRouter = require("./routes/drink_ingredients"); */
 const ingredientsRouter = require("./routes/ingredients");
 const glassesRouter = require("./routes/glasses");
-const drinksGlassesRouter = require("./routes/drinks_glasses");
-const drinksCategory = require("./routes/drinks_categories");
+const categoriesRouter =  require("./routes/categories");
+/* const drinksGlassesRouter = require("./routes/drinks_glasses");
+ *//* const drinksCategory = require("./routes/drinks_categories"); */
 
 const app = express();
 
@@ -28,11 +29,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/drinks", drinksRouter);
-app.use("/drinks_ingredients", drinksIngredientRouter);
+/* app.use("/drinks_ingredients", drinksIngredientRouter); */
 app.use("/ingredients", ingredientsRouter);
 app.use("/glasses", glassesRouter);
-app.use("/drinks_glasses", drinksGlassesRouter);
-app.use("/drinks_categories", drinksCategoriesRouter);
+app.use("/categories", categoriesRouter);
+/* app.use("/drinks_glasses", drinksGlassesRouter); */
+/* app.use("/drinks_categories", drinksCategoriesRouter); */
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

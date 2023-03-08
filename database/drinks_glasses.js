@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+/* const { DataTypes } = require("sequelize");
 const sequelize = require(".");
 
 const Drinks_glasses = sequelize.define('Drinks_glasses', {
@@ -16,4 +16,4 @@ const Drinks_glasses = sequelize.define('Drinks_glasses', {
     paranoid: true,
 });
 
-module.exports = Drinks_glasses;
+module.exports = Drinks_glasses; */
