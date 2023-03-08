@@ -8,8 +8,8 @@ const Drinks_ingredients = sequelize.define("Drinks_ingredients", {
     autoIncrement: true,
     primaryKey: true,
   },
-  description : DataTypes.STRING,
-  drink_name: DataTypes.STRING,
+  description : DataTypes.TEXT,
+  drink_name: DataTypes.TEXT,
   drink_id: DataTypes.INTEGER,
   ingredients_id: DataTypes.INTEGER,
 },{
