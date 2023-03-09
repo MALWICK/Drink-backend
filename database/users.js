@@ -1,10 +1,16 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('.');
 const User = sequelize.define('user', {
-  firstName: DataTypes.TEXT,
-  lastName: DataTypes.TEXT,
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  firstName: DataTypes.STRING,
+  lastName: DataTypes.STRING,
   emailAddress: {
-    type:DataTypes.TEXT,
+    type:DataTypes.STRING,
     unique: true
   },
   phone:DataTypes.TEXT,
