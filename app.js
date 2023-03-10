@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bcrypt = require("bcrypt");
 const dotEnv =  require("dotenv");
+dotEnv.config();
 
 
 const indexRouter = require("./routes/index");

@@ -22,8 +22,8 @@ router.post("/", async function (req, res) {
   });
   res.send(user);
 });
-/* 
-router.post("/signup", async function (req, res) {
+
+/* router.post("/signup", async function (req, res) {
   const { firstName, lastName, emailAddress, phone, password } = req.body;
   const hash = await bcrypt.hash(password, 10);
   User.create({
@@ -52,7 +52,7 @@ router.post("/login", async function (req, res) {
   }
   res.send("ok");
 });
- */
+  */
 router.get("/:id", async function (req, res) {
   const user = await User.findByPk(req.params.id);
   res.send(user);
