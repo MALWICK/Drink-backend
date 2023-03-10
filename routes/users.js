@@ -1,7 +1,11 @@
 const express = require("express");
-const { op } = require("sequelize");
+const uuid = require("uuid");
+const { op} = require("sequelize");
 const User = require("../database/users");
 const router = express.Router();
+const { SALT_ROUNDS } = require("../auth/constants");
+const { authMiddleware } = require("../auth/auth");
+
 const bcrypt = require("bcrypt");
 
 /* GET users listing. */
@@ -10,18 +14,42 @@ router.get("/", async function (req, res) {
   res.send(user);
 });
 
-router.post("/", async function (req, res) {
-  const { firstName, lastName, emailAddress, phone, password } = req.body;
-  const user = await User.create({
-    firstName,
-    lastName,
-    emailAddress,
-    phone,
-    password,
-    apiKey: Date.now(),
-  });
-  res.send(user);
-});
+router.post(
+  "/", authMiddleware,
+  async function (req, res) {
+    const { firstName, lastName, emailAddress, phone, password } = req.body;
+    bcrypt.hash(password, SALT_ROUNDS, async function(err, hash) {
+      
+        const user = await User.create({
+          firstName,
+          lastName,
+          emailAddress,
+          phone,
+          password: hash,
+          apiKey: uuid.v4(),
+        });
+        res.send(user);
+    
+    });
+   /*  const user = await User.create({
+      firstName,
+      lastName,
+      emailAddress,
+      phone,
+      password,
+      apiKey: Date.now(),
+    });
+
+    let hashedPaswords = await bcrypt.hash(password, 10)
+    User.push({
+      emailAddress: emailAddress,
+      password: password,
+    })
+    console.log(password, emailAddress);
+    console.log(hashedPaswords) */
+    /* res.send(user, "validation past"); */
+  }
+);
 
 /* router.post("/signup", async function (req, res) {
   const { firstName, lastName, emailAddress, phone, password } = req.body;
