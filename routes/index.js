@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const sequelize = require("../database");
@@ -7,18 +7,24 @@ const User = require("../database/users");
 const { signToken } = require("../auth/jwt");
 const { authMiddleware } = require("../auth/auth");
 
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
 });
-
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ where: { emailAddress: username } });
   if (!user) {
     return res.sendStatus(401);
+  }else {
+    return res.status(200).send("Welcome")
+  }
+
+  const oldUser = await User.findOne({ where: { emailAddress: username } });
+
+  if (oldUser) {
+    return res.status(400).send("User already exists. Please Login");
   }
 
   bcrypt.compare(password, user.password, function (err, result) {
@@ -27,8 +33,8 @@ router.post("/login", async (req, res) => {
     }
 
     if (result) {
-      const token = signToken({id: user.id, email: user.emailAddress}):
-      res.send({user, token});
+      const token = signToken({ user_id: user.id, email: user.emailAddress });
+      res.send({ user, token });
     } else {
       return res.sendStatus(401);
     }
@@ -38,6 +44,5 @@ router.post("/login", async (req, res) => {
 router.get("/current-user", authMiddleware, (req, res) => {
   res.send(req.user);
 });
-
 
 module.exports = router;
