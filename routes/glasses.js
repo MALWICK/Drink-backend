@@ -11,9 +11,9 @@ router.post("/", async (req, res) => {
   res.join(glass);
 });
 router.post("/", async (req, res) => {
-  const { name} = req.body;
+  const { name } = req.body;
   const glass = await Glasses.create({
-   name,
+    name,
   });
   res.send(glass);
 });
@@ -29,11 +29,12 @@ router.put("/:id", async (req, res) => {
       },
     }
   );
-  res.send(glass);
+  const glass1 = await Glasses.findByPk(req.params.id);
+  res.send(glass1);
 });
 
 router.patch("/:id", async (req, res) => {
-  const { name} = req.body;
+  const { name } = req.body;
   const glass = await Glasses.update(
     {
       name,
@@ -42,7 +43,8 @@ router.patch("/:id", async (req, res) => {
       where: { id: req.params.id },
     }
   );
-  res.send(glass);
+  const glass1 = await Glasses.findByPk(req.params.id);
+  res.send(glass1);
 });
 router.delete("/:id", async (req, res) => {
   const glass = await Glasses.destroy({

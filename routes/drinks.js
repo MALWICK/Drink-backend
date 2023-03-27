@@ -2,9 +2,9 @@ const express = require("express");
 const Drinks = require("../database/drinks");
 const router = express.Router();
 router.get("/", async (req, res) => {
-    const drink = await Drinks.findAll();
-    res.json(drink);
-  });
+  const drink = await Drinks.findAll();
+  res.json(drink);
+});
 router.post("/", async (req, res) => {
   const { name, description, imageUrl, recipe } = req.body;
   const drink = await Drinks.create({ name, description, imageUrl, recipe });
@@ -25,7 +25,8 @@ router.post("/", async (req, res) => {
     userid,
   });
   res.send(drink);
-});router.put("/:id", async function (req, res) {
+});
+router.put("/:id", async function (req, res) {
   const { name, description, imageUrl, recipe } = req.body;
   const drink = await Drinks.update(
     {
@@ -40,7 +41,8 @@ router.post("/", async (req, res) => {
       },
     }
   );
-  res.send(drink);
+  const drinks = await Drinks.findByPk(req.params.id);
+  res.send(drinks);
 });
 router.patch("/:id", async (req, res) => {
   await Drinks.update(req.body, { where: { id: req.params.id } });

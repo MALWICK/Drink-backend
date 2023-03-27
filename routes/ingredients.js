@@ -31,7 +31,8 @@ router.put("/:id", async (req, res) => {
       },
     }
   );
-  res.send(ingredients);
+  const ingredient = await Ingredients.findByPk(req.params.id);
+  res.send(ingredient);
 });
 router.patch("/:id", async (req, res) => {
   const { name, description } = req.body;
@@ -44,7 +45,8 @@ router.patch("/:id", async (req, res) => {
       where: { id: req.params.id },
     }
   );
-  res.send(ingredients);
+  const ingredient = await Ingredients.findByPk(req.params.id);
+  res.send(ingredient);
 });
 router.delete("/:id", async (req, res) => {
   const ingredients = await Ingredients.destroy({

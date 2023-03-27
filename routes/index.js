@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
     }
 
     if (result) {
-      const token = signToken({id: user.id, email: user.emailAddress})
+      const token = signToken({id: user.id, email: user.emailAddress}):
       res.send({user, token});
     } else {
       return res.sendStatus(401);

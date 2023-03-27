@@ -1,3 +1,4 @@
+const User = require("../database/users")
 const jwt = require("jsonwebtoken");
 const { JWT_PRIVATE_KEY } = require("./constants");
 
